@@ -1,5 +1,8 @@
 # API Kit for Laravel
 
+[![tests](https://github.com/JustSteveKing/api-kit/actions/workflows/tests.yml/badge.svg)](https://github.com/JustSteveKing/api-kit/actions/workflows/tests.yml)
+[![linter](https://github.com/JustSteveKing/api-kit/actions/workflows/lint.yml/badge.svg)](https://github.com/JustSteveKing/api-kit/actions/workflows/lint.yml)
+
 The ultimate jump start for building scalable, production-ready APIs with Laravel.
 
 ## Todo
