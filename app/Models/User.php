@@ -10,8 +10,10 @@ use App\Enums\Rbac\Role;
 use Carbon\CarbonInterface;
 use Database\Factories\UserFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -28,6 +30,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property CarbonInterface|null $created_at
  * @property CarbonInterface|null $updated_at
  * @property CarbonInterface|null $deleted_at
+ * @property Collection<int, ApiLog> $logs
  */
 final class User extends Authenticatable implements MustVerifyEmail
 {
@@ -53,6 +56,14 @@ final class User extends Authenticatable implements MustVerifyEmail
         'password',
         'remember_token',
     ];
+
+    public function logs(): HasMany
+    {
+        return $this->hasMany(
+            related: ApiLog::class,
+            foreignKey: 'user_id',
+        );
+    }
 
     public function hasPermission(Permission $permission): bool
     {
