@@ -9,7 +9,7 @@ use App\Enums\Rbac\Role;
 use App\Models\User;
 
 describe('authorization tests', function (): void {
-    test('user with Admin role has permission for DeleteUser', function () {
+    test('user with Admin role has permission for DeleteUser', function (): void {
         $user = new User(['role' => Role::Admin]);
 
         $permission = Permission::DeleteUser;
@@ -17,7 +17,7 @@ describe('authorization tests', function (): void {
         expect($user->hasPermission($permission))->toBeTrue();
     });
 
-    test('user with User role has permission for DeleteUser', function () {
+    test('user with User role has permission for DeleteUser', function (): void {
         $user = new User(['role' => Role::User]);
 
         $permission = Permission::DeleteUser;
@@ -25,7 +25,7 @@ describe('authorization tests', function (): void {
         expect($user->hasPermission($permission))->toBeTrue();
     });
 
-    test('user with Admin role has permission for PerformDangerousAction', function () {
+    test('user with Admin role has permission for PerformDangerousAction', function (): void {
         $user = new User(['role' => Role::Admin]);
 
         $permission = Permission::PerformDangerousAction;
@@ -33,7 +33,7 @@ describe('authorization tests', function (): void {
         expect($user->hasPermission($permission))->toBeTrue();
     });
 
-    test('user with User role does not have permission for PerformDangerousAction', function () {
+    test('user with User role does not have permission for PerformDangerousAction', function (): void {
         $user = new User(['role' => Role::User]);
 
         $permission = Permission::PerformDangerousAction;
