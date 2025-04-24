@@ -9,4 +9,4 @@ Route::prefix('auth')->as('auth:')->group(base_path(
     path: 'routes/api/auth.php',
 ));
 
-Route::get('/user', fn(Request $request) => new \App\Http\Resources\UserResource($request->user()))->middleware('auth:sanctum');
+Route::get('/user', fn(Request $request) => new App\Http\Resources\UserResource($request->user()))->middleware('auth:sanctum');
