@@ -10,5 +10,6 @@ Route::middleware(['log-requests'])->group(static function (): void {
         path: 'routes/api/auth.php',
     ));
 
+
     Route::get('/user', fn(Request $request) => new App\Http\Resources\UserResource($request->user()))->middleware('auth:sanctum');
 });
