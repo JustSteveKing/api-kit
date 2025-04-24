@@ -12,11 +12,11 @@ enum Permission: string
 {
     use HasAttributes;
 
-    #[RoleAttribute(role: Role::Admin)]
+    #[RoleAttribute(roles: [Role::Admin, Role::User])]
     #[Description('Allows deleting a user.')]
     case DeleteUser = 'users:delete';
 
-    #[RoleAttribute(role: Role::Admin)]
+    #[RoleAttribute(roles: [Role::Admin])]
     #[Description('Allows performing a super dangerous action.')]
     case PerformDangerousAction = 'action:dangerous';
 }

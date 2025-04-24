@@ -10,5 +10,8 @@ use Attribute;
 #[Attribute(Attribute::TARGET_CLASS_CONSTANT | Attribute::IS_REPEATABLE)]
 final class Role
 {
-    public function __construct(public RoleEnum $role) {}
+    /**
+     * @param list<RoleEnum> $roles
+     */
+    public function __construct(public array $roles) {}
 }

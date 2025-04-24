@@ -70,13 +70,8 @@ final class User extends Authenticatable implements MustVerifyEmail
         /** @var list<RoleAttribute> $roleAttributes */
         $roleAttributes = $permission->getAttributes(RoleAttribute::class);
 
-        /** @var list<Role> $allowedRoles */
-        $allowedRoles = array_map(
-            static fn(RoleAttribute $roleAttribute): Role => $roleAttribute->role,
-            $roleAttributes,
-        );
+        return array_any($roleAttributes, fn($roleAttribute) => in_array($this->role, $roleAttribute->roles, true));
 
-        return in_array($this->role, $allowedRoles, true);
     }
 
     /** @return array<string,string|class-string> */
